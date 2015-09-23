@@ -3,11 +3,30 @@
 import numpy as np
 import variables
 
+#the functions which define evolution of the state
 rhs_functions = []
 
-def f(X):
-    return 2
+map_vars = variables.X_model.index
 
-rhs_functions.append(f)
+def f(X):   #USERDEF
+    return X[map_vars('food')]
+def g(X):   #USERDEF
+    return X[map_vars('food')]
+def h(X):   #USERDEF
+    return X[map_vars('food')]
 
-print rhs_functions
+#dummy function which gives derivative of time, with respect to time
+def time(X):
+    return 1
+
+#make sure to append all the functions you define
+rhs_functions.append(f)     #USERDEF
+rhs_functions.append(g)     #USERDEF
+rhs_functions.append(h)     #USERDEF
+
+rhs_functions.append(time)
+
+if len(rhs_functions)!=variables.k:
+    raise ValueError("Number of functions don't match the number of variables")
+
+print "Functions defined..."
