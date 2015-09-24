@@ -31,9 +31,9 @@ if t_0 >= t_1:
 #assign the initial time at the end of the array
 X_0[k-1] = t_0
 
-describe(X, 'food', 2)          #USERDEF
-describe(X, 'wood', 1)          #USERDEF
-describe(X, 'population', 10)   #USERDEF
+describe(X_0, 'food', 2)          #USERDEF
+describe(X_0, 'wood', 1)          #USERDEF
+describe(X_0, 'population', 10)   #USERDEF
 
 #flag OK
 print "Initial conditions defined..."
