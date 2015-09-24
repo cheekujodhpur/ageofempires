@@ -9,11 +9,11 @@ rhs_functions = []
 map_vars = variables.X_model.index
 
 def f(X):   #USERDEF
-    return X[map_vars('food')]
+    return -X[map_vars('wood')]
 def g(X):   #USERDEF
     return X[map_vars('food')]
 def h(X):   #USERDEF
-    return X[map_vars('food')]
+    return 0.5*X[map_vars('food')]
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):

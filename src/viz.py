@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import numpy as np
+import matplotlib.pyplot as plt
 import variables
+import functions
 
 #function to write results in a csv file to be used for plotting
 def csv_out(result,outfile):
@@ -17,6 +19,13 @@ def csv_out(result,outfile):
             outfile.write(str(j)+',')
         outfile.write('\n')
 
-#function to plot given fields
-def plot_from_result():
-    print "In Progress"
+#function to plot given field against time
+def var_vs_time(result,variable):
+    plt.plot(result[:,variables.k-1],result[:,functions.map_vars(variable)])
+    plt.show()
+
+#function to plot given field against given field
+def var_vs_var(result,variable_x,variable_y):
+    plt.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)])
+    plt.show()
+
