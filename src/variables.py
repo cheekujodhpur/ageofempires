@@ -14,7 +14,7 @@ def describe(X, variable_name, value):
 k = len(X_model) + 1
 
 #the ndarray to store initial conditions
-X_0 = np.zeros(k)
+X_0 = np.zeros((k,2))
 
 #initial time, does NOT assume to be 0
 t_0 = 0.0       #USERDEF
@@ -29,11 +29,11 @@ if t_0 >= t_1:
     raise ValueError('Initial time cannot be greater than final time')
 
 #assign the initial time at the end of the array
-X_0[k-1] = t_0
+X_0[k-1] = [t_0,t_0+1]
 
-describe(X_0, 'food', 2)          #USERDEF
-describe(X_0, 'wood', 1)          #USERDEF
-describe(X_0, 'population', 10)   #USERDEF
+describe(X_0, 'food', [1,6])          #USERDEF
+describe(X_0, 'wood', [2,3])          #USERDEF
+describe(X_0, 'population', [1,2])   #USERDEF
 
 #flag OK
 print "Initial conditions defined..."

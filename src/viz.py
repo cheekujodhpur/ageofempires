@@ -29,3 +29,19 @@ def var_vs_var(result,variable_x,variable_y):
     plt.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)])
     plt.show()
 
+
+#function to plot two fields, for varying initial conditions
+def var_vs_var_multi(results,variable_x,variable_y):
+    fig,ax = plt.subplots()
+    for result in results:
+        ax.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)])
+    plt.show()
+
+#function to plot given field against time, for varying initial conditions
+def var_vs_time_multi(results,variable):
+    fig,ax = plt.subplots()
+    for result in results:
+        ax.plot(result[:,variables.k-1],result[:,functions.map_vars(variable)])
+    plt.show()
+
+
