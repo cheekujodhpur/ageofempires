@@ -36,7 +36,7 @@ def simulate():
     result.append(odeint(dX_dt, np.array(X_0_point), t_vec))
     while _inc < _ops:
         if X_0_point[_pos]==X_0[_pos][1]-1:
-            X_0_point[_pos]==X_0[_pos][0]
+            X_0_point[_pos]=X_0[_pos][0]
             _pos -= 1
         else:
             X_0_point[_pos] += 1

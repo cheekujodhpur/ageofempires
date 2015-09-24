@@ -32,7 +32,7 @@ if t_0 >= t_1:
 X_0[k-1] = [t_0,t_0+1]
 
 describe(X_0, 'food', [1,6])          #USERDEF
-describe(X_0, 'wood', [2,3])          #USERDEF
+describe(X_0, 'wood', [1,6])          #USERDEF
 describe(X_0, 'population', [1,2])   #USERDEF
 
 #flag OK
