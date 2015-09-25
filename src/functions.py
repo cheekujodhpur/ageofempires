@@ -13,9 +13,9 @@ def map_vars(name):
         return variables.X_model.index(name)
 
 def f(X):   #USERDEF
-    return X[map_vars('wood')]*(1-X[map_vars('food')]**2)
+    return X[map_vars('wood')]
 def g(X):   #USERDEF
-    return 1-X[map_vars('wood')]**2
+    return -X[map_vars('food')]
 def h(X):   #USERDEF
     return 0.5*X[map_vars('food')]
 

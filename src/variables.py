@@ -20,12 +20,12 @@ X_0 = np.zeros((k,2))
 t_0 = 0.0       #USERDEF
 
 #final time, anything greater than t_1
-t_1 = 1.0      #USERDEF
+t_1 = 10.0      #USERDEF
 
 #number of simulation points
 N = 100
 #step to determine initial condition density
-init_step = 0.1
+init_step = 0.2
 
 #check
 if t_0 >= t_1:
