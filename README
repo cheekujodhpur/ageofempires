@@ -2,6 +2,16 @@
 
 This repository maintains the code for our course project. Course Code: PH 542; Course Name: Non Linear Dynamics
 
+## Usage
+```python
+import viz
+import simulation
+
+results = simulation.simulate()
+viz.phase_2D(results,'time','population')
+viz.phase_2D(results,'food','wood')
+```
+
 ## Contributors
 
 Kumar Ayush, Sandesh Kalantre, Rakshit Jain, Basuhi Ravi, Keshav Srinivasan
