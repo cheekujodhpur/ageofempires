@@ -6,12 +6,16 @@ import variables
 #the functions which define evolution of the state
 rhs_functions = []
 
-map_vars = variables.X_model.index
+def map_vars(name):
+    if(name=='time'):
+        return variables.k-1
+    else:
+        return variables.X_model.index(name)
 
 def f(X):   #USERDEF
-    return -X[map_vars('wood')]
+    return X[map_vars('wood')]*(1-X[map_vars('food')]**2)
 def g(X):   #USERDEF
-    return X[map_vars('food')]
+    return 1-X[map_vars('wood')]**2
 def h(X):   #USERDEF
     return 0.5*X[map_vars('food')]
 
