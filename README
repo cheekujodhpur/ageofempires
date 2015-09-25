@@ -3,6 +3,7 @@
 This repository maintains the code for our course project. Course Code: PH 542; Course Name: Non Linear Dynamics
 
 ## Usage
+
 ```python
 import viz
 import simulation
