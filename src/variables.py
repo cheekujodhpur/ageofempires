@@ -24,16 +24,19 @@ t_1 = 10.0      #USERDEF
 
 #number of simulation points
 N = 100
+#step to determine initial condition density
+init_step = 0.2
+
 #check
 if t_0 >= t_1:
     raise ValueError('Initial time cannot be greater than final time')
 
 #assign the initial time at the end of the array
-X_0[k-1] = [t_0,t_0+1]
+X_0[k-1] = [t_0,t_0+init_step]
 
-describe(X_0, 'food', [1,6])          #USERDEF
-describe(X_0, 'wood', [1,6])          #USERDEF
-describe(X_0, 'population', [1,2])   #USERDEF
+describe(X_0, 'food', [1,2])          #USERDEF
+describe(X_0, 'wood', [1,2])          #USERDEF
+describe(X_0, 'population', [1,1+init_step])   #USERDEF
 
 #flag OK
 print "Initial conditions defined..."

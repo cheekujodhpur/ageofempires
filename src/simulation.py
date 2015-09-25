@@ -29,17 +29,17 @@ def simulate():
 
     sim_start_time = time.time()
 
-    _ops = reduce(mul,(p[1]-p[0] for p in X_0))-1
+    _ops = reduce(mul,((p[1]-p[0])/variables.init_step for p in X_0))-1
     X_0_point = [i[0] for i in X_0]
     _pos = k-1
     _inc = 0
     result.append(odeint(dX_dt, np.array(X_0_point), t_vec))
     while _inc < _ops:
-        if X_0_point[_pos]==X_0[_pos][1]-1:
+        if X_0_point[_pos]==X_0[_pos][1]-variables.init_step:
             X_0_point[_pos]=X_0[_pos][0]
             _pos -= 1
         else:
-            X_0_point[_pos] += 1
+            X_0_point[_pos] += variables.init_step
             _inc += 1
             _pos = k-1      #increment the innermost loop
             result.append(odeint(dX_dt, np.array(X_0_point), t_vec))
