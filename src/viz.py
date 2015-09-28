@@ -2,6 +2,8 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as colors
+import matplotlib.cm as cmx
 from mpl_toolkits.mplot3d import Axes3D
 import variables
 import functions
@@ -32,8 +34,13 @@ import functions
 
 
 #function to plot two fields, for varying initial conditions
-def phase_2D(results,variable_x,variable_y,ax_xlim=None,ax_ylim=None):
+def phase_2D(results,variable_x,variable_y,variable_color=None,ax_xlim=None,ax_ylim=None):
     fig,ax = plt.subplots()
+    jet = cm = plt.get_cmap('jet')
+    
+    if(variable_color):
+        cNorm = colors.Normalize(vmin = variables.X_0[functions.map_vars(variable_color)][0], vmax = variables.X_0[functions.map_vars(variable_color)][1]) 
+        scalarMap = cmx.ScalarMappable(norm=cNorm,cmap=jet)
 
     #define axis limits if specified
     if(ax_xlim):
@@ -42,7 +49,10 @@ def phase_2D(results,variable_x,variable_y,ax_xlim=None,ax_ylim=None):
         ax.set_ylim(ax_ylim)
         
     for result in results:
-        ax.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)])
+        if(variable_color):
+            ax.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)],c=scalarMap.to_rgba(result[:,functions.map_vars(variable_color)][0]))
+        else:
+            ax.plot(result[:,functions.map_vars(variable_x)],result[:,functions.map_vars(variable_y)],c='black')
     plt.show()
 
 #function to plot three fields, for varying initial conditions
