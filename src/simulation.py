@@ -30,7 +30,7 @@ def simulate():
     sim_start_time = time.time()
 
     _ops = reduce(mul,((p[1]-p[0])/variables.init_step for p in X_0))-1
-    if _ops<=0:
+    if _ops<0:
         raise ValueError('Number of operations have to be greater than zero')
     X_0_point = [i[0] for i in X_0]
     _pos = k-1

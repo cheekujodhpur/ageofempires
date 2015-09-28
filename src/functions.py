@@ -18,15 +18,18 @@ popn = map_vars('population')
 area = map_vars('area')
 
 #additional parameters
-alpha = 1     #USERDEF
-beta = 1     #USERDEF
+alpha = 0.08    #USERDEF
+beta = 0.02     #USERDEF
+gamma = 0.1     #USERDEF
+delta = 0.5     #USERDEF
+popinc = 0.5    #USERDEF
 
 def f_area(X):   #USERDEF
-    return X[area]*X[popn]*(-X[area]+alpha*X[popn])
-def f_popn(X):   #USERDEF
-    return X[area]*X[popn]*X[food]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])
+    return (alpha+beta)*X[popn]-X[area]
 def f_food(X):   #USERDEF
-    return X[popn]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])
+    return (gamma*X[popn]-X[food])*(X[area]-beta*X[popn])
+def f_popn(X):   #USERDEF
+    return popinc*X[popn]-delta*(gamma*X[popn]-X[food])
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
