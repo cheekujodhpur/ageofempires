@@ -20,7 +20,7 @@ X_0 = np.zeros((k,2))
 t_0 = 0.0       #USERDEF
 
 #final time, anything greater than t_1
-t_1 = 10.0      #USERDEF
+t_1 = 100.0      #USERDEF
 
 #number of simulation points
 N = 100
@@ -34,9 +34,9 @@ if t_0 >= t_1:
 #assign the initial time at the end of the array
 X_0[k-1] = [t_0,t_0+init_step]
 
-describe(X_0, 'population', [1,1.5])   #USERDEF
-describe(X_0, 'food', [0.5,2])          #USERDEF
-describe(X_0, 'area', [0.5,2])          #USERDEF
+describe(X_0, 'population', [2,2.5])   #USERDEF
+describe(X_0, 'food', [10,10.5])          #USERDEF
+describe(X_0, 'area', [2,2.5])          #USERDEF
 
 #flag OK
 print "Initial conditions defined..."
