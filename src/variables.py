@@ -3,7 +3,7 @@
 import numpy as np
 
 #What are our variables? Resources and population
-X_model = ['food','wood','population']
+X_model = ['population','food','area']
 
 #Needed to map variable names to indices
 def describe(X, variable_name, value):
@@ -25,7 +25,7 @@ t_1 = 10.0      #USERDEF
 #number of simulation points
 N = 100
 #step to determine initial condition density
-init_step = 0.2
+init_step = 0.5
 
 #check
 if t_0 >= t_1:
@@ -34,9 +34,9 @@ if t_0 >= t_1:
 #assign the initial time at the end of the array
 X_0[k-1] = [t_0,t_0+init_step]
 
-describe(X_0, 'food', [-1,1])          #USERDEF
-describe(X_0, 'wood', [-1,1])          #USERDEF
-describe(X_0, 'population', [1,1+init_step])   #USERDEF
+describe(X_0, 'population', [1,2])   #USERDEF
+describe(X_0, 'food', [0,5])          #USERDEF
+describe(X_0, 'area', [0,5])          #USERDEF
 
 #flag OK
 print "Initial conditions defined..."

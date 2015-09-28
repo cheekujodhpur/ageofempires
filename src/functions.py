@@ -12,21 +12,30 @@ def map_vars(name):
     else:
         return variables.X_model.index(name)
 
-def f(X):   #USERDEF
-    return X[map_vars('wood')]
-def g(X):   #USERDEF
-    return -X[map_vars('food')]
-def h(X):   #USERDEF
-    return 0.5*X[map_vars('food')]
+#dummy
+food = map_vars('food')
+popn = map_vars('population')
+area = map_vars('area')
+
+#additional parameters
+alpha = 1     #USERDEF
+beta = 1     #USERDEF
+
+def f_area(X):   #USERDEF
+    return X[area]*X[popn]*(-X[area]+alpha*X[popn])
+def f_popn(X):   #USERDEF
+    return X[area]*X[popn]*X[food]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])
+def f_food(X):   #USERDEF
+    return X[popn]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
     return 1
 
 #make sure to append all the functions you define
-rhs_functions.append(f)     #USERDEF
-rhs_functions.append(g)     #USERDEF
-rhs_functions.append(h)     #USERDEF
+rhs_functions.append(f_popn)     #USERDEF
+rhs_functions.append(f_food)     #USERDEF
+rhs_functions.append(f_area)     #USERDEF
 
 rhs_functions.append(time)
 
