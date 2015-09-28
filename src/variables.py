@@ -3,7 +3,7 @@
 import numpy as np
 
 #What are our variables? Resources and population
-X_model = ['population','food','area']
+X_model = ['population','food','area','population2','food2','area2']
 
 #Needed to map variable names to indices
 def describe(X, variable_name, value):
@@ -34,9 +34,12 @@ if t_0 >= t_1:
 #assign the initial time at the end of the array
 X_0[k-1] = [t_0,t_0+init_step]
 
-describe(X_0, 'population', [1,2])   #USERDEF
-describe(X_0, 'food', [0,5])          #USERDEF
-describe(X_0, 'area', [0,5])          #USERDEF
+describe(X_0, 'population', [1,1.5])   #USERDEF
+describe(X_0, 'food', [0.5,2])          #USERDEF
+describe(X_0, 'area', [0.5,2])          #USERDEF
+describe(X_0, 'population2', [0,0.5])   #USERDEF
+describe(X_0, 'food2', [0.5,2])          #USERDEF
+describe(X_0, 'area2', [0.5,2])          #USERDEF
 
 #flag OK
 print "Initial conditions defined..."
