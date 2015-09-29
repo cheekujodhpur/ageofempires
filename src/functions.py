@@ -52,7 +52,13 @@ def f_popn2(X):   #USERDEF
     return 1.125*(X[food2]) - X[popn2] - f_mig(X)
 
 def f_mig(X):
-    return (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
+    #res = ((X[food]*X[popn2])/(X[popn]+0.1) - (X[food2]*X[popn])/(X[popn2]+0.1))
+    res = (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
+    if res>0:
+        res *= X[popn2]
+    else:
+        res *= X[popn]
+    return res
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
