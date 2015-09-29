@@ -25,12 +25,18 @@ beta = 0.2    #USERDEF
 gamma = 0.5    #USERDEF
 delta = 0.5     #USERDEF
 
+#assumption that 1 unit of population needs one unit of area
+#assumption that 1 couple gives 0.25 child(ren) per year
+
 def f_area(X):   #USERDEF
-    return 100*X[area]*math.exp(-X[area])*(X[popn]-(alpha1+alpha2)*X[area])
+    if int(X[popn])>int(X[area]):
+        return max(f_popn(X),0)
+    else:
+        return 0
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF
-    return 2.75*(X[food]**2)/(X[popn]) - X[popn]
+    return 1.125*(X[food]) - X[popn]
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
