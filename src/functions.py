@@ -2,6 +2,7 @@
 
 import numpy as np
 import variables
+import math
 
 #the functions which define evolution of the state
 rhs_functions = []
@@ -25,11 +26,11 @@ gamma = 0.5    #USERDEF
 delta = 0.5     #USERDEF
 
 def f_area(X):   #USERDEF
-    return X[popn]-(alpha1+alpha2)*X[area]
+    return 100*X[area]*math.exp(-X[area])*(X[popn]-(alpha1+alpha2)*X[area])
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF
-    return gamma*X[popn]-delta*(X[popn]-X[food])
+    return 2.75*(X[food]**2)/(X[popn]) - X[popn]
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
