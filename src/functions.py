@@ -25,10 +25,7 @@ gamma = 0.5    #USERDEF
 delta = 0.5     #USERDEF
 
 def f_area(X):   #USERDEF
-    if(X[area]<100):
-        return (X[popn]-(alpha1+alpha2)*X[area])
-    else:
-        return 0
+    return X[popn]-(alpha1+alpha2)*X[area]
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF

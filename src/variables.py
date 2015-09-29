@@ -23,7 +23,7 @@ t_0 = 0.0       #USERDEF
 t_1 = 100.0      #USERDEF
 
 #number of simulation points
-N = 100
+N = 1000
 #step to determine initial condition density
 init_step = 0.5
 
