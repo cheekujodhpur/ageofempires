@@ -39,7 +39,7 @@ def f_area(X):   #USERDEF
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF
-    return 1.125*(X[food]) - X[popn] + (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
+    return 1.125*(X[food]) - X[popn] + f_mig(X)
 
 def f_area2(X):   #USERDEF
     if int(X[popn2])>int(X[area2]):
@@ -49,7 +49,10 @@ def f_area2(X):   #USERDEF
 def f_food2(X):   #USERDEF
     return alpha2*X[area2]-X[popn2]
 def f_popn2(X):   #USERDEF
-    return 1.125*(X[food2]) - X[popn2] - (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
+    return 1.125*(X[food2]) - X[popn2] - f_mig(X)
+
+def f_mig(X):
+    return (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
@@ -62,6 +65,7 @@ rhs_functions.append(f_area)     #USERDEF
 rhs_functions.append(f_popn2)     #USERDEF
 rhs_functions.append(f_food2)     #USERDEF
 rhs_functions.append(f_area2)     #USERDEF
+rhs_functions.append(f_mig)     #USERDEF
 
 rhs_functions.append(time)
 
