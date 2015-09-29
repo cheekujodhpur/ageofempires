@@ -20,10 +20,10 @@ X_0 = np.zeros((k,2))
 t_0 = 0.0       #USERDEF
 
 #final time, anything greater than t_1
-t_1 = 100.0      #USERDEF
+t_1 = 1000.0      #USERDEF
 
 #number of simulation points
-N = 1000
+N = 10000
 #step to determine initial condition density
 init_step = 0.5
 
@@ -36,7 +36,7 @@ X_0[k-1] = [t_0,t_0+init_step]
 
 describe(X_0, 'population', [2,2.5])   #USERDEF
 describe(X_0, 'food', [10,15])          #USERDEF
-describe(X_0, 'area', [2,7])          #USERDEF
+describe(X_0, 'area', [15,25])          #USERDEF
 
 #flag OK
 print "Initial conditions defined..."
