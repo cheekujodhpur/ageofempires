@@ -58,7 +58,7 @@ def phase_2D(results,variable_x,variable_y,variable_color=None,ax_xlim=None,ax_y
     plt.show()
 
 #function to plot three fields, for varying initial conditions
-def phase_3D(results,variable_x,variable_y,variable_z,variable_color,ax_xlim=None,ax_ylim=None,ax_zlim=None):
+def phase_3D(results,variable_x,variable_y,variable_z,variable_color=None,ax_xlim=None,ax_ylim=None,ax_zlim=None):
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     jet = cm = plt.get_cmap('jet')
