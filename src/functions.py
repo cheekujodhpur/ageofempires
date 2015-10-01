@@ -24,6 +24,7 @@ area = map_vars('area')
 alpha1 = 0.3    #USERDEF
 #land portion used for cultivation
 alpha2 = 0.7    #USERDEF
+#rate of deaths, pseudo
 beta = 0.2    #USERDEF
 gamma = 0.5    #USERDEF
 delta = 0.5     #USERDEF
@@ -45,7 +46,7 @@ def f_area(X):   #USERDEF
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF
-    return 1.125*(X[food]) - X[popn]
+    return 1.125*(X[food]) - beta*X[popn]
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
