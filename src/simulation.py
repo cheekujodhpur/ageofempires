@@ -30,7 +30,7 @@ def simulate():
     sim_start_time = time.time()
 
     _ops = reduce(mul,((p[1]-p[0])/variables.init_step for p in X_0))-1
-    if _ops<=0:
+    if _ops<0:
         raise ValueError('Number of operations have to be greater than zero')
     X_0_point = [i[0] for i in X_0]
     _pos = k-1
@@ -43,6 +43,7 @@ def simulate():
         else:
             X_0_point[_pos] += variables.init_step
             _inc += 1
+            print _inc,"/",_ops," simulations completed..."
             _pos = k-1      #increment the innermost loop
             result.append(odeint(dX_dt, np.array(X_0_point), t_vec))
             

@@ -4,4 +4,4 @@ import viz
 import simulation
 
 results = simulation.simulate()
-viz.phase_2D(results,'time','population','food')
+viz.multi_phase_2D(results,'time','population','population2')

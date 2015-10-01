@@ -2,6 +2,7 @@
 
 import numpy as np
 import variables
+import math
 
 #the functions which define evolution of the state
 rhs_functions = []
@@ -21,21 +22,43 @@ popn2 = map_vars('population2')
 area2 = map_vars('area2')
 
 #additional parameters
-alpha = 0.1     #USERDEF
-beta = 0.1     #USERDEF
+alpha1 = 0.3    #USERDEF
+alpha2 = 0.7    #USERDEF
+beta = 0.2    #USERDEF
+gamma = 0.5    #USERDEF
+delta = 0.5     #USERDEF
+
+#assumption that 1 unit of population needs one unit of area
+#assumption that 1 couple gives 0.25 child(ren) per year
 
 def f_area(X):   #USERDEF
-    return X[area]*X[popn]*(-X[area]+alpha*X[popn])
-def f_popn(X):   #USERDEF
-    return X[area]*X[popn]*X[food]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])-X[area2]*X[food2]*X[popn]+X[area]*X[food]*X[popn2]
+    if int(X[popn])>int(X[area]):
+        return max(f_popn(X),0)
+    else:
+        return 0
 def f_food(X):   #USERDEF
-    return X[popn]*(-X[food]+beta*X[popn])*(-X[area]+alpha*X[popn])
+    return alpha2*X[area]-X[popn]
+def f_popn(X):   #USERDEF
+    return 1.125*(X[food]) - X[popn] + f_mig(X)
+
 def f_area2(X):   #USERDEF
-    return X[area2]*X[popn2]*(-X[area2]+alpha*X[popn2])
-def f_popn2(X):   #USERDEF
-    return X[area2]*X[popn2]*X[food2]*(-X[food2]+beta*X[popn2])*(-X[area2]+alpha*X[popn2])+X[area2]*X[food2]*X[popn]-X[area]*X[food]*X[popn2]
+    if int(X[popn2])>int(X[area2]):
+        return max(f_popn2(X),0)
+    else:
+        return 0
 def f_food2(X):   #USERDEF
-    return X[popn2]*(-X[food2]+beta*X[popn2])*(-X[area2]+alpha*X[popn2])
+    return alpha2*X[area2]-X[popn2]
+def f_popn2(X):   #USERDEF
+    return 1.125*(X[food2]) - X[popn2] - f_mig(X)
+
+def f_mig(X):
+    #res = ((X[food]*X[popn2])/(X[popn]+0.1) - (X[food2]*X[popn])/(X[popn2]+0.1))
+    res = (X[food]/(X[popn]+0.1) - X[food2]/(X[popn2]+0.1))
+    if res>0:
+        res *= X[popn2]
+    else:
+        res *= X[popn]
+    return res
 
 #dummy function which gives derivative of time, with respect to time
 def time(X):
@@ -48,6 +71,7 @@ rhs_functions.append(f_area)     #USERDEF
 rhs_functions.append(f_popn2)     #USERDEF
 rhs_functions.append(f_food2)     #USERDEF
 rhs_functions.append(f_area2)     #USERDEF
+rhs_functions.append(f_mig)     #USERDEF
 
 rhs_functions.append(time)
 
