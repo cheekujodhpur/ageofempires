@@ -22,7 +22,10 @@ popn2 = map_vars('population2')
 area2 = map_vars('area2')
 
 #additional parameters
+
+#land portion used to live
 alpha1 = 0.3    #USERDEF
+#land portion used for cultivation
 alpha2 = 0.7    #USERDEF
 beta = 0.2    #USERDEF
 gamma = 0.5    #USERDEF
@@ -32,8 +35,14 @@ delta = 0.5     #USERDEF
 #assumption that 1 couple gives 0.25 child(ren) per year
 
 def f_area(X):   #USERDEF
-    if int(X[popn])>int(X[area]):
-        return max(f_popn(X),0)
+    #if there are more people than we have to make them live
+    if int(X[popn])>int(alpha1*X[area]):
+        #if they can't even survive without it, increase by the surplus, rapidly
+        if int(X[popn])>int(X[area]):
+            return X[popn]-X[area]
+        #otherwise they only need increase at the rate of increase
+        else:
+            return max(f_popn(X),0)
     else:
         return 0
 def f_food(X):   #USERDEF
@@ -42,8 +51,14 @@ def f_popn(X):   #USERDEF
     return 1.125*(X[food]) - X[popn] + f_mig(X)
 
 def f_area2(X):   #USERDEF
-    if int(X[popn2])>int(X[area2]):
-        return max(f_popn2(X),0)
+    #if there are more people than we have to make them live
+    if int(X[popn2])>int(alpha1*X[area2]):
+        #if they can't even survive without it, increase by the surplus, rapidly
+        if int(X[popn2])>int(X[area2]):
+            return X[popn2]-X[area2]
+        #otherwise they only need increase at the rate of increase
+        else:
+            return max(f_popn2(X),0)
     else:
         return 0
 def f_food2(X):   #USERDEF
