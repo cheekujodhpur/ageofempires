@@ -27,6 +27,7 @@ area2 = map_vars('area2')
 alpha1 = 0.3    #USERDEF
 #land portion used for cultivation
 alpha2 = 0.7    #USERDEF
+#rate of deaths, pseudo
 beta = 0.2    #USERDEF
 gamma = 0.5    #USERDEF
 delta = 0.5     #USERDEF
@@ -48,7 +49,7 @@ def f_area(X):   #USERDEF
 def f_food(X):   #USERDEF
     return alpha2*X[area]-X[popn]
 def f_popn(X):   #USERDEF
-    return 1.125*(X[food]) - X[popn] + f_mig(X)
+    return 1.125*(X[food]) - beta*X[popn] + f_mig(X)
 
 def f_area2(X):   #USERDEF
     #if there are more people than we have to make them live
@@ -64,7 +65,7 @@ def f_area2(X):   #USERDEF
 def f_food2(X):   #USERDEF
     return alpha2*X[area2]-X[popn2]
 def f_popn2(X):   #USERDEF
-    return 1.125*(X[food2]) - X[popn2] - f_mig(X)
+    return 1.125*(X[food2]) - beta*X[popn2] - f_mig(X)
 
 def f_mig(X):
     #res = ((X[food]*X[popn2])/(X[popn]+0.1) - (X[food2]*X[popn])/(X[popn2]+0.1))
