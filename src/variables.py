@@ -34,12 +34,12 @@ if t_0 >= t_1:
 #assign the initial time at the end of the array
 X_0[k-1] = [t_0,t_0+init_step]
 
-describe(X_0, 'population', [100,101])   #USERDEF
-describe(X_0, 'food', [10,101])          #USERDEF
-describe(X_0, 'area', [20,51])          #USERDEF
+describe(X_0, 'population', [1,2])   #USERDEF
+describe(X_0, 'food', [0,1])          #USERDEF
+describe(X_0, 'area', [1,2])          #USERDEF
 describe(X_0, 'population2', [0,1])   #USERDEF
 describe(X_0, 'food2', [0,1])          #USERDEF
-describe(X_0, 'area2', [40,41])          #USERDEF
+describe(X_0, 'area2', [1,2])          #USERDEF
 describe(X_0, 'mig', [0,1])          #USERDEF
 
 #flag OK
