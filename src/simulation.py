@@ -43,6 +43,7 @@ def simulate():
         else:
             X_0_point[_pos] += variables.init_step
             _inc += 1
+            print _inc,"/",_ops," simulations completed..."
             _pos = k-1      #increment the innermost loop
             result.append(odeint(dX_dt, np.array(X_0_point), t_vec))
             
