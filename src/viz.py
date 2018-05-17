@@ -35,6 +35,9 @@ import functions
 def phase_2D(results,variable_x,variable_y,ax_xlim=None,ax_ylim=None):
     fig,ax = plt.subplots()
 
+    ax.set_xlabel(str(variable_x))
+    ax.set_ylabel(str(variable_y))
+
     #define axis limits if specified
     if(ax_xlim):
         ax.set_xlim(ax_xlim)
